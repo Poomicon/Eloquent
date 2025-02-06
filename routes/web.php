@@ -20,6 +20,17 @@ Route::get('products', [ProductController::class, 'index']); // แสดงร�
 
 Route::get('/rooms', [RoomController::class, 'index'])->middleware(['auth', 'verified'])->name("rooms.index");
 
+Route::get('/rooms/create', [RoomController::class, 'create'])->middleware(['auth', 'verified'])->name('rooms.create');
+
+Route::post('/bookings', [RoomController::class, 'store']);
+
+Route::get('/rooms/{id}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
+
+Route::put('/rooms/{id}', [RoomController::class, 'update'])->name('rooms.update');
+
+Route::delete('/rooms/{id}', [RoomController::class, 'destroy'])->name('rooms.destroy');
+
+
 Route::get('/dashboard', function () {  
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

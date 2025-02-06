@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id(); // สร้างคอลัมน์ id เป็น primary key
-            $table->foreignId('customer_id')->constrained(); // คอลัมน์ customer_id เป็น foreign key เชื่อมโยงกับตาราง customers
+            $table->foreignId('customer_id')->nullable()->constrained()->onDelete('cascade'); // คอลัมน์ customer_id เป็น foreign key เชื่อมโยงกับตาราง customers
             $table->foreignId('room_id')->constrained(); // คอลัมน์ room_id เป็น foreign key เชื่อมโยงกับตาราง rooms
             $table->date('check_in_date'); // คอลัมน์วันที่เช็คอิน
             $table->date('check_out_date'); // คอลัมน์วันที่เช็คเอาท์
